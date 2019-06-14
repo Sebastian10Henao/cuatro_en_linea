@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Tablero Cuatro en Linea</title>
+        <style type="text/css">
+            .ui-diagram-element {   
+                width:2em; 
+                height:2em;
+                line-height:1em;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+                border-radius: 2em;
+                border: 1px solid #404a4e;
+                background-color: #404a4e;
+                color: #cccccc;
+            }
+            
+            .ui-diagram-element-ficha-gris {   
+                width:3em; 
+                height:3em;
+                line-height:1em;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+                border-radius: 2em;
+                border: 1px solid #404a4e;
+                background-color: red;
+                color: #4f4f4f;              
+            }
+            
+            .ui-diagram-element-ficha {   
+                width:2em; 
+                height:2em;
+                line-height:1em;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+                border-radius: 2em;
+                border: 1px solid #404a4e;
+                background-color: red;
+                color: #cccccc;
+            }
+
+            .ui-diagram-element-ficha-blanca {   
+                width:2em; 
+                height:2em;
+                line-height:1em;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+                border-radius: 2em;
+                border: 1px solid #404a4e;
+                background-color: white;
+                color: #cccccc;
+            }
+
+            .ui-diagram-element-ficha-azul {   
+                width:2em; 
+                height:2em;
+                line-height:1em;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+                border-radius: 2em;
+                border: 1px solid #404a4e;
+                background-color: blue;
+                color: #cccccc;
+            }
+            .ui-diagram-element:hover {
+                background-color: #20282b;
+            }
+            
+            .btn-round{
+                border-radius: 90%;
+                width: 50px;
+                height: 50px;
+                border-color: #4f4f4f;
+                margin-left: 35px;
+                /*background-color: gold;*/
+            }
+        </style>
+    </h:head>
+    <h:body>
+         <h:form id="frmTablero">
+            <p:growl id="pgTablero"/>  
+            
+            <h:panelGroup rendered="#{!controladorCuatroEnLinea.estadoJuego}">
+                <h:outputText value="En el momento no existe un juego habilitado para usted"/>
+                <br/>
+                <h:outputText id="fecha_sistema" value="#{controladorCuatroEnLinea.fechaSistema}" 
+                              style="color: red; font-size: 4em;" />
+                
+                <p:poll interval="5"   update="frmTablero"  />
+            </h:panelGroup>
+            
+            <h:panelGroup id="gpJuego" >
+                 <h:panelGroup rendered="#{controladorCuatroEnLinea.estadoJuego}" id="panelTablero" layout="block" style="overflow: auto; width: 100%; height: 1000px;" >
+                    
+                     <p:commandButton class="btn-round" value="1" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="2" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="3" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="4" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="5" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="6" update="@all" ajax="false"/>
+                     <p:commandButton class="btn-round" value="7" update="@all" ajax="false"/>
+                     
+                     <p:diagram id="tablero" value="#{controladorCuatroEnLinea.model}" style="height:1000px" styleClass="ui-widget-content" />
+            
+            
+            <!--<h:panelGroup id="panelTablero" layout="block" style="overflow: auto; width: 100%; height: 1000px;" >
+                <p:diagram id="tablero" value="#//{controladorCuatroEnLinea.model}" style="height:1000px" styleClass="ui-widget-content" />
+            </h:panelGroup>
+            </h:panelGroup>
+
+                <p:remoteCommand name="elementClickRight"
+                                 actionListener="#//{controladorCuatroEnLinea.onClickRight()}">
+                </p:remoteCommand>
+                <script>
+                    $(document).ready(function(){
+                        $('.ui-diagram > .ui-diagram-element').mousedown(function (info){
+                            if(info.wich === 2){
+                                elementClickRigth([{
+                                        name: 'elementId',
+                                        value: info.target.id
+                                }]);
+                            }
+                        });
+                    });
+
+                </script>
+
+                <p:contextMenu for="panelTablero" id="cmFicha"
+                               targetFilter=".ui-diagram-element">
+                    <p:menuitem value="Escoger Columna" update="@all" ajax="false" icon="ui-icon-disk" action ="#//{controladorCuatroEnLinea.pruebaMenu()}"/>
+                </p:contextMenu>-->                
+                </h:panelGroup>
+            </h:panelGroup>
+        </h:form>
+    </h:body>
+</html>
