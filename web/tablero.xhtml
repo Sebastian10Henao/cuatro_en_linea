@@ -26,7 +26,7 @@
                 box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
                 border-radius: 2em;
                 border: 1px solid #404a4e;
-                background-color: red;
+                background-color: lightsteelblue;
                 color: #4f4f4f;              
             }
             
@@ -103,7 +103,15 @@
                      <p:commandButton class="btn-round" value="6" update="@all" ajax="false"/>
                      <p:commandButton class="btn-round" value="7" update="@all" ajax="false"/>
                      
+                                       
+ <p:commandButton value="Multiplo" update="@all" ajax="false" action="#{controladorCuatroEnLinea.multipo()}"/>
+                     
                      <p:diagram id="tablero" value="#{controladorCuatroEnLinea.model}" style="height:1000px" styleClass="ui-widget-content" />
+                     
+                     <h:form>
+                        <p:inputText id="txtCorreo" required="true" size="30" value="Ingrese el número"></p:inputText>
+                        <p:commandButton value="Habilitar Juego" update="@all" ajax="false" action="#{controladorCuatroEnLinea.activarJuego()}"/>
+                    </h:form>
             
             
             <!--<h:panelGroup id="panelTablero" layout="block" style="overflow: auto; width: 100%; height: 1000px;" >
@@ -117,7 +125,7 @@
                 <script>
                     $(document).ready(function(){
                         $('.ui-diagram > .ui-diagram-element').mousedown(function (info){
-                            if(info.wich === 2){
+                            if(info.wich === 1){
                                 elementClickRigth([{
                                         name: 'elementId',
                                         value: info.target.id
